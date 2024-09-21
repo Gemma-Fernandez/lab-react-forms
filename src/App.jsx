@@ -26,6 +26,23 @@ function App() {
   const handleGraduationYearInput= (e)=> setGraduationYear(e.target.value);
   const handleGraduatedInput= (e)=> setGraduated(e.target.checked);
 
+  const handleFormSubmit= (e)=>{
+    e.preventDefault();
+    const newStudent= { fullName, image, phone, email, program, graduationYear, graduated};
+
+    setStudents([...students, newStudent]);
+
+    setFullName("");
+    setImage("");
+    setPhone("");
+    setEmail("");
+    setProgram("");
+    setGraduationYear(2023);
+    setGraduated(false);
+
+
+  }
+
 
 
 
@@ -35,7 +52,7 @@ function App() {
       <Navbar />
 
       {/* FORM */}
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <span>Add a Student</span>
         <div>
           <label>
